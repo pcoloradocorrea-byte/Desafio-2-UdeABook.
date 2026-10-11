@@ -1,0 +1,4 @@
+.qtcreator/
+*.user
+*.autosave
+build/
