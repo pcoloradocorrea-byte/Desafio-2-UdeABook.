@@ -1,19 +1,25 @@
 cmake_minimum_required(VERSION 3.16)
-
 project(Udeabook LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Udeabook main.cpp
-    Medidor.h
-    Medidor.cpp
-    Lista.h
-    Foto.h
-    Foto.cpp)
+include_directories(include)
 
-include(GNUInstallDirs)
-install(TARGETS Udeabook
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+add_executable(Udeabook
+    src/main.cpp
+    src/Foto.cpp
+    src/Medidor.cpp
+    include/Foto.h
+    include/Medidor.h
+    include/Lista.h
+    include/Album.h
+    src/Album.cpp
+    include/Usuario.h
+    src/Usuario.cpp
+    include/Mensaje.h
+    src/Mensaje.cpp
+    include/SolicitudAmistad.h
+    src/SolicitudAmistad.cpp
+    include/Amigos.h
 )
