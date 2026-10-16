@@ -14,7 +14,7 @@ private:
 public:
     //constructores
     Foto();
-    Foto(string& fechaCaptura, unsigned short tamaño, const std::string& ruta);
+    Foto(const std::string& fechaCaptura, unsigned short tamano, const std::string& ruta); //revisar ya que creo que no es necesario
 
     void mostrarRuta() const;
     void darLike();

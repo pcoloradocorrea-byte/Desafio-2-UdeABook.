@@ -22,4 +22,9 @@ add_executable(Udeabook
     include/SolicitudAmistad.h
     src/SolicitudAmistad.cpp
     include/Amigos.h
+    src/Amigos.cpp
+    include/Solicitudes_amistad.h
+    src/Solicitudes_amistad.cpp
+    include/UdeABook.h
+    src/UdeABook.cpp
 )

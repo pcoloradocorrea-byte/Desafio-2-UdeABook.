@@ -33,4 +33,6 @@ bool Mensaje::estaLeido() const{
     return leido;
 }
 
-//Memoria
+unsigned long Mensaje::memoriaUsada() const{
+    return sizeof(Mensaje) + emisor.capacity() + receptor.capacity() + fecha.capacity() + texto.capacity();
+}

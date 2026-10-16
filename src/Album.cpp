@@ -1,44 +1,50 @@
 #include "Album.h"
 
-
-Album::Album() : nombre(""), ruta(""), privacidad(""){
+Album::Album() : nombre(""), ruta(""), privacidad(PUBLICO) {
 }
 
-Album::Album(const string& nombre, const string, unsigned char privacidad){
-
+Album::Album(const std::string& nombre, const std::string& ruta, unsigned char privacidad)
+    : nombre(nombre), ruta(ruta), privacidad(privacidad) {
 }
 
-void Album::agregarFoto(const Foto& foto){
-    foto.agregar(foto);
+void Album::agregarFoto(const Foto& foto) {
+    fotos.agregar(foto);
 }
 
-bool Album::Visibilidad(bool beDueno, bool beAmigo) const{
-    if (beDueno == true){
+bool Album::esVisiblePara(bool esDueno, bool esAmigo) const {
+    if (esDueno) {
         return true;
     }
-    elif (privacidad == PUBLICO);{
+    if (privacidad == PUBLICO) {
         return true;
     }
-    elif (privacidad == AMIGOS);{
-        return beAmigo;
+    if (privacidad == AMIGOS) {
+        return esAmigo;
     }
     return false;
 }
 
-unsigned int Album::obtenerFoto(unsigned short posicion){
-    return Nfotos[posicion]
+unsigned int Album::cantidadFotos() const {
+    return fotos.getTamano();
 }
 
-string Album::obtenerNombre() const{
+Foto& Album::getFoto(unsigned int posicion) {
+    return fotos[posicion];
+}
+
+std::string Album::getNombre() const {
     return nombre;
 }
 
-string Album::obtenerRuta() const{
+std::string Album::getRuta() const {
     return ruta;
 }
 
-unsigned char Album::obtenerPrivacidad() const{
+unsigned char Album::getPrivacidad() const {
     return privacidad;
 }
 
-//falta memoria
+unsigned long Album::memoriaUsada() const {
+    return sizeof(Album) - sizeof(Lista<Foto>) + nombre.capacity() + ruta.capacity()
+    + fotos.memoriaUsada();
+}

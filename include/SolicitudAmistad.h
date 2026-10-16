@@ -1,6 +1,7 @@
 #ifndef SOLICITUDAMISTAD_H
 #define SOLICITUDAMISTAD_H
 #include <string>
+
 using namespace std;
 
 class SolicitudAmistad{
@@ -11,11 +12,13 @@ private:
 
 public:
     SolicitudAmistad();
-    SolicitudAmistad(const string& emisor, const string& receptor, const string fecha);
+    SolicitudAmistad(const string& emisor, const string& receptor, const string& fecha);
+
     string obtenerEmisor() const;
     string obtenerReceptor() const;
     string obtenerFecha() const;
 
-    //memoria
+    unsigned long memoriaUsada() const;
 };
-#endif // SOLICITUDAMISTAD_H
+
+#endif

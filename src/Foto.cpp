@@ -5,10 +5,12 @@
 Foto::Foto() : fechaCaptura(""), tamano(0), ruta(""), likes(0) {
 }
 
-Foto::Foto(const string& fechaCaptura, unsigned short tamano, const string ruta)
+Foto::Foto(const std::string& fechaCaptura, unsigned short tamano, const std::string& ruta)
+    : fechaCaptura(fechaCaptura), tamano(tamano), ruta(ruta), likes(0) {
+}
 
 //mostrar ruta de la foto
-    void Foto::mostrarRuta() const{
+void Foto::mostrarRuta() const{
     cout<< ruta << endl;
 }
 
@@ -34,4 +36,8 @@ string Foto::obtenerRuta() const{
 
 int Foto::obtenerLikes() const{
     return likes;
+}
+
+unsigned long Foto::memoriaUsada() const {
+    return sizeof(Foto) + fechaCaptura.capacity() + ruta.capacity();
 }

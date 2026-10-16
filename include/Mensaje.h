@@ -22,7 +22,7 @@ public:
     string obtenerTexto() const;
     bool estaLeido() const;
 
-    //falta Memoria
+    unsigned long memoriaUsada() const;
 };
 
 #endif // MENSAJE_H
