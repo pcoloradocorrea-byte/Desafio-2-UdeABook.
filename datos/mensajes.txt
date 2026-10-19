@@ -15,4 +15,4 @@ daniela575;andrea47;2026-08-01 11:36;1;Vamos a almorzar?
 mariana792;manuela101;2026-08-01 12:17;1;Ya termine el trabajo
 mariana366;carolina386;2026-08-01 12:18;1;Te llamo mas tarde
 manuela699;david305;2026-08-01 12:40;1;Feliz cumpleanos!
-
+david305;2026-08-01 12:40;1;0;pedro10;2026-10-18 21:55;0;hola

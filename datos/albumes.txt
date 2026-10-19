@@ -1,5 +1,5 @@
-juanito76;Futbol;/users/datos/juanito76/albums/Futbol;2
-juanito76;Mascotas;/users/datos/juanito76/albums/Mascotas;2
+juanito76;Futbol;/users/datos/juanito76/albums/Futbol;1
+juanito76;Mascotas;/users/datos/juanito76/albums/Mascotas;0
 juanito76;Amigos;/users/datos/juanito76/albums/Amigos;2
 maria22;Universidad;/users/datos/maria22/albums/Universidad;2
 maria22;Mascotas;/users/datos/maria22/albums/Mascotas;2

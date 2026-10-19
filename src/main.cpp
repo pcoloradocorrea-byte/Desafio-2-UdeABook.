@@ -27,6 +27,15 @@ void mostrarFotosPerfil(UdeABook& red, unsigned int actual, Lista<unsigned int>&
     Medidor::mostrarReporte(red.memoriaUsada() + elegidos.memoriaUsada());
 }
 
+int leerNumero() {
+    int numero;
+    while ((cin >> numero).fail() == true) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Escribe un numero: ";
+    }
+    return numero;
+}
 
 int main() {
     UdeABook red;
@@ -88,7 +97,7 @@ int main() {
         cout << "5. Actualizar fotos de perfil de mis amigos" << endl;
         cout << "0. Salir" << endl;
         cout << "Opcion: ";
-        cin >> opcion;
+        opcion = leerNumero();
         cout<<endl;
 
         if (opcion == 1) {
@@ -97,7 +106,7 @@ int main() {
             cout << "1. Enviar solicitud de amistad" << endl;
             cout << "2. Ver y aceptar solicitudes recibidas" << endl;
             cout << "Opcion: ";
-            cin >> subOpcion;
+            subOpcion = leerNumero();
             cout<<endl;
 
             if (subOpcion == 1) {
@@ -150,7 +159,7 @@ int main() {
                 } else {
                     int eleccion;
                     cout << "Tienes esta cantidad de solicitudes de amistad. (0 para cancelar): ";
-                    cin >> eleccion;
+                    eleccion = leerNumero();
 
                     if (eleccion >= 1 && eleccion <= (int)posiciones.getTamano()) {
                         red.aceptarSolicitud(posiciones[eleccion - 1]);
@@ -189,7 +198,7 @@ int main() {
                 } else {
                     int eleccion;
                     cout << "Album a ver (0 para cancelar): ";
-                    cin >> eleccion;
+                    eleccion = leerNumero();
 
                     if (eleccion >= 1 && eleccion <= (int)visibles.getTamano()) {
                         Album& album = amigo.getAlbum(visibles[eleccion - 1]);
@@ -211,7 +220,7 @@ int main() {
                                 album.getFoto(pos).mostrarRuta();
                                 cout << "1. Siguiente   2. Previa   3. Dar/quitar like   0. Salir" << endl;
                                 cout << "Opcion: ";
-                                cin >> accion;
+                                accion = leerNumero();
                                 Medidor::contar();
 
                                 if (accion == 1) {
@@ -242,7 +251,7 @@ int main() {
         else if (opcion == 3) {
             int numeroDeSugerencias; //cuantas sugerencias se veran
             cout << "Cuantas sugerencias quieres ver (1 a 20): ";
-            cin >> numeroDeSugerencias;
+            numeroDeSugerencias = leerNumero();
 
             if (numeroDeSugerencias < 1 || numeroDeSugerencias > 20) {
                 cout << "Valor no valido." << endl;
@@ -277,7 +286,7 @@ int main() {
             cout << "2. Leer mensajes nuevos" << endl;
             cout << "3. Buscar mensajes por rango de fecha" << endl;
             cout << "Opcion: ";
-            cin >> sub;
+            sub = leerNumero();
 
             Lista<Mensaje>& todos = red.obtenerMensajes();
 

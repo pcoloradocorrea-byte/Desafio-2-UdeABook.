@@ -18,7 +18,7 @@ bool Album::esVisiblePara(bool Dueno, bool Amigo) const {
     if (privacidad == Publico) {
         return true;
     }
-    if (privacidad == Privado) {
+    if (privacidad == Amigos) {
         return Amigo;
     }
     return false;
