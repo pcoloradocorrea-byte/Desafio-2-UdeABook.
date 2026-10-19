@@ -13,7 +13,7 @@ private:
     Lista<Foto> fotos;
 
 public:
-    enum Privacidad { PUBLICO = 0, PRIVADO = 1, AMIGOS = 2 };
+    enum Privacidad { Publico = 0, Privado = 1, Amigos = 2 };
 
     Album();
     Album(const std::string& nombre, const std::string& ruta, unsigned char privacidad);
@@ -27,7 +27,7 @@ public:
     std::string getRuta() const;
     unsigned char getPrivacidad() const;
 
-    unsigned long memoriaUsada() const; //Ver luego
+    unsigned long memoriaUsada() const;
 };
 
 #endif

@@ -14,11 +14,12 @@ private:
 public:
     //constructores
     Foto();
-    Foto(const std::string& fechaCaptura, unsigned short tamano, const std::string& ruta); //revisar ya que creo que no es necesario
+    Foto(const string& fechaCaptura, unsigned short tamano, const string& ruta);
 
     void mostrarRuta() const;
     void darLike();
     void quitarLike();
+
 
     string obtenerFechacaptura()const;
     unsigned short obtenerTamano() const;

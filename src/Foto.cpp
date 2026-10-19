@@ -9,14 +9,16 @@ Foto::Foto(const std::string& fechaCaptura, unsigned short tamano, const std::st
     : fechaCaptura(fechaCaptura), tamano(tamano), ruta(ruta), likes(0) {
 }
 
-//mostrar ruta de la foto
+
 void Foto::mostrarRuta() const{
     cout<< ruta << endl;
 }
 
+
 void Foto::darLike(){
     likes++;
 };
+
 
 void Foto::quitarLike(){
     likes--;
@@ -29,6 +31,8 @@ string Foto::obtenerFechacaptura() const {
 unsigned short Foto::obtenerTamano() const{
     return tamano;
 }
+
+
 
 string Foto::obtenerRuta() const{
     return ruta;

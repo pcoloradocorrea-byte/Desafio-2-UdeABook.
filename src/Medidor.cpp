@@ -17,8 +17,9 @@ unsigned int Medidor::obtenerIteraciones(){
 }
 
 void Medidor::mostrarReporte(unsigned int memoriaBytes){
-    cout<<"---Reporte de consumo---";
-    cout << "iteraciones" << iteraciones << endl;
+    cout<<endl;
+    cout<<"---Reporte de consumo---"<<endl;
+    cout << "iteraciones: " << iteraciones << endl;
     cout << "Memoria en uso: " << memoriaBytes << "bytes" << endl;
 }
 

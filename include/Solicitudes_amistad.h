@@ -4,6 +4,8 @@
 #include "Lista.h"
 #include "SolicitudAmistad.h"
 
+
+//con esta clase administro las solicitudes de amistad pendientes
 class Solicitudes_amistad {
 private:
     Lista<SolicitudAmistad> pendientes;

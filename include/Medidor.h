@@ -3,9 +3,7 @@
 
 #include <string>
 using namespace std;
-//Requisito VII
-//Se mide las iteraciones
-//cada clase reporta reporta lo que ocupa
+
 
 class Medidor{
 private:
@@ -18,19 +16,18 @@ public:
     static void mostrarReporte(unsigned int memoriaBytes);
 };
 
-//¡Cuantos bytes ocupa este elemento?
-//
+
 template <typename T>
 
-unsigned long memoriaDe(const T& elemento) { //No modificamos el elemento
-    return elemento.memoriaUsada(); //Se le pregunta al objeto cuanto ocupa y devuelve
+unsigned long memoriaDe(const T& elemento) {
+    return elemento.memoriaUsada();
 }
 inline unsigned long memoriaDe(const unsigned int&){
-    return sizeof(unsigned int); //Retorna cuantos bytes tiene un tipo
+    return sizeof(unsigned int);
 }
 
 inline unsigned long memoriaDe(const string& texto){
-    return sizeof(string) + texto.capacity(); //calcular memoria de un string
+    return sizeof(string) + texto.capacity();
 }
 
 #endif // MEDIDOR_H

@@ -1,0 +1,18 @@
+juliana228;isabella554;2026-08-01 08:07;1;Cuentame como te fue
+valentina6;felipe284;2026-08-01 08:26;1;Nos vemos manana?
+valentina678;paula500;2026-08-01 08:35;1;Vi tu album nuevo, esta genial
+daniela998;mateo693;2026-08-01 08:42;1;Hola, como vas?
+camila756;carlos456;2026-08-01 09:06;1;Hola, como vas?
+paula310;diego832;2026-08-01 09:31;1;Nos vemos manana?
+santiago545;paula138;2026-08-01 09:44;1;Gracias por la ayuda
+paula467;diego841;2026-08-01 10:14;1;Ya termine el trabajo
+juan590;carlos838;2026-08-01 10:25;1;Cuentame como te fue
+esteban792;laura295;2026-08-01 10:33;1;Cuentame como te fue
+simon120;paula138;2026-08-01 11:11;1;Te llamo mas tarde
+diego832;paula310;2026-08-01 11:17;1;Te llamo mas tarde
+valentina3;esteban792;2026-08-01 11:35;1;Feliz cumpleanos!
+daniela575;andrea47;2026-08-01 11:36;1;Vamos a almorzar?
+mariana792;manuela101;2026-08-01 12:17;1;Ya termine el trabajo
+mariana366;carolina386;2026-08-01 12:18;1;Te llamo mas tarde
+manuela699;david305;2026-08-01 12:40;1;Feliz cumpleanos!
+

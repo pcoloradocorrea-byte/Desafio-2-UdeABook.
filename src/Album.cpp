@@ -1,6 +1,6 @@
 #include "Album.h"
 
-Album::Album() : nombre(""), ruta(""), privacidad(PUBLICO) {
+Album::Album() : nombre(""), ruta(""), privacidad(Publico) {
 }
 
 Album::Album(const std::string& nombre, const std::string& ruta, unsigned char privacidad)
@@ -11,15 +11,15 @@ void Album::agregarFoto(const Foto& foto) {
     fotos.agregar(foto);
 }
 
-bool Album::esVisiblePara(bool esDueno, bool esAmigo) const {
-    if (esDueno) {
+bool Album::esVisiblePara(bool Dueno, bool Amigo) const {
+    if (Dueno == true) {
         return true;
     }
-    if (privacidad == PUBLICO) {
+    if (privacidad == Publico) {
         return true;
     }
-    if (privacidad == AMIGOS) {
-        return esAmigo;
+    if (privacidad == Privado) {
+        return Amigo;
     }
     return false;
 }

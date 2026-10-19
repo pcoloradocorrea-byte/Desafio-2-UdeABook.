@@ -4,36 +4,34 @@
 #include <string>
 #include "Album.h"
 #include "Lista.h"
+using namespace std;
 
 class Usuario {
 private:
-    std::string nombreUsuario;
-    std::string fechaNacimiento;
-    std::string correo;
-    std::string fotoPerfil;
-    std::string ciudad;
-    std::string pais;
-    std::string fechaInscripcion;
+    string nombreUsuario;
+    string fechaNacimiento;
+    string correo;
+    string fotoPerfil;
+    string ciudad;
+    string pais;
+    string fechaInscripcion;
     Lista<Album> albumes;
 
 public:
     Usuario();
-    Usuario(const std::string& nombreUsuario, const std::string& fechaNacimiento,
-            const std::string& correo, const std::string& fotoPerfil,
-            const std::string& ciudad, const std::string& pais,
-            const std::string& fechaInscripcion);
+    Usuario(const string& nombreUsuario,const string& fechaNacimiento, const string& correo, const string& fotoPerfil, const string& ciudad, const string& pais, const string& fechaInscripcion);
 
     void agregarAlbum(const Album& album);
     unsigned int cantidadAlbumes() const;
     Album& getAlbum(unsigned int posicion);
 
-    std::string getNombreUsuario() const;
-    std::string getFechaNacimiento() const;
-    std::string getCorreo() const;
-    std::string getFotoPerfil() const;
-    std::string getCiudad() const;
-    std::string getPais() const;
-    std::string getFechaInscripcion() const;
+    string getNombreUsuario() const;
+    string getFechaNacimiento() const;
+    string getCorreo() const;
+    string getFotoPerfil() const;
+    string getCiudad() const;
+    string getPais() const;
+    string getFechaInscripcion() const;
 
     unsigned long memoriaUsada() const;
 };

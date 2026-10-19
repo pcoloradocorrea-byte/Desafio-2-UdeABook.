@@ -27,4 +27,14 @@ add_executable(Udeabook
     src/Solicitudes_amistad.cpp
     include/UdeABook.h
     src/UdeABook.cpp
+    datos/usuarios.txt
+    datos/amigos.txt
+    datos/solicitudes.txt
+
+    datos/albumes.txt
+    datos/fotos.txt
+    datos/mensajes.txt
+
+
+
 )

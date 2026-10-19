@@ -7,16 +7,19 @@ Amigos::Amigos() {
     matriz = nullptr;
 }
 
-//constructor
+
+//reserva una matriz de n x n guardada en un arreglo plano
 Amigos::Amigos(unsigned int cantidadUsuarios) {
     this->cantidadUsuarios = cantidadUsuarios;
 
     matriz = new bool[cantidadUsuarios * cantidadUsuarios]; //apuntamos a una matriz
 
+    //al inicio nadie es amigo de nadie
     for (unsigned int i = 0; i < cantidadUsuarios * cantidadUsuarios; i++) {
         matriz[i] = false;
     }
-} //"matriz" de falses
+}
+
 
 
 Amigos::~Amigos() {
@@ -24,42 +27,43 @@ Amigos::~Amigos() {
 }
 
 
-//validacion y aceptacion
-void Amigos::agregarAmistad(unsigned int a, unsigned int b) {
-    if (a < cantidadUsuarios && b < cantidadUsuarios && a != b) {
-        matriz[a * cantidadUsuarios + b] = true;
-        matriz[b * cantidadUsuarios + a] = true;
+
+
+//marca la amistad entre posicion A y posicion B
+void Amigos::agregarAmistad(unsigned int PosicionA, unsigned int PosicionB) {
+    if (PosicionA < cantidadUsuarios && PosicionB < cantidadUsuarios && PosicionA != PosicionB) {
+        matriz[PosicionA * cantidadUsuarios + PosicionB] = true;
+        matriz[PosicionB * cantidadUsuarios + PosicionA] = true;
     }
-}//establecemos la amistad
-
-
-//validacion y eliminacion
-void Amigos::quitarAmistad(unsigned int a, unsigned int b) {
-    if (a < cantidadUsuarios && b < cantidadUsuarios && a != b) {
-        matriz[a * cantidadUsuarios + b] = false;
-        matriz[b * cantidadUsuarios + a] = false;
-    }
-} //eliminamos la amistad
-
-
-//me retorna un bool (true=amigos) o (false = No lo son)
-bool Amigos::sonAmigos(unsigned int a, unsigned int b) const {
-    if (a >= cantidadUsuarios || b >= cantidadUsuarios || a == b) {
-        return false;
-    }
-
-    return matriz[a * cantidadUsuarios + b];
 }
 
 
-//me da el numero de usuarios del objeto
+//se elimina la amistad entre posicionA y posicion B
+void Amigos::quitarAmistad(unsigned int PosicionA, unsigned int PosicionB) {
+    if (PosicionA < cantidadUsuarios && PosicionB < cantidadUsuarios && PosicionA != PosicionB) {
+        matriz[PosicionA * cantidadUsuarios + PosicionB] = false;
+        matriz[PosicionB * cantidadUsuarios + PosicionA] = false;
+    }
+}
+
+
+//me retorna un bool (true=amigos) o (false = No lo son)
+bool Amigos::sonAmigos(unsigned int PosicionA, unsigned int PosicionB) const {
+    if (PosicionA >= cantidadUsuarios || PosicionB >= cantidadUsuarios || PosicionA == PosicionB) {
+        return false;
+    }
+    return matriz[PosicionA * cantidadUsuarios + PosicionB];
+}
+
+
+
 unsigned int Amigos::obtenerCantidadUsuarios() const {
     return cantidadUsuarios;
 }
 
 
 
-//crea una tabla nueva que es copia de otra
+//constructor de copia para evitar errores
 Amigos::Amigos(const Amigos& otro) {
     cantidadUsuarios = otro.cantidadUsuarios;
     matriz = nullptr;
@@ -74,7 +78,7 @@ Amigos::Amigos(const Amigos& otro) {
 }
 
 
-//copia otra tabla dentro de esta: amigos1 = amigos2
+//reemplazamos la matriz vacia por una de tamano real
 void Amigos::operator=(const Amigos& otro) {
     bool* nueva = nullptr;
 
@@ -92,15 +96,15 @@ void Amigos::operator=(const Amigos& otro) {
 }
 
 
-//cuenta cuantos amigos tiene el usuario a
-unsigned int Amigos::cantidadAmigos(unsigned int a) const {
-    if (a >= cantidadUsuarios) {
+//cuenta cuantos amigos tiene el usuario PosicionA
+unsigned int Amigos::cantidadAmigos(unsigned int PosicionA) const {
+    if (PosicionA >= cantidadUsuarios) {
         return 0;
     }
 
     unsigned int total = 0;
     for (unsigned int i = 0; i < cantidadUsuarios; i++) {
-        if (matriz[a * cantidadUsuarios + i]) {
+        if (matriz[PosicionA * cantidadUsuarios + i]) {
             total++;
         }
         Medidor::contar();
@@ -109,15 +113,15 @@ unsigned int Amigos::cantidadAmigos(unsigned int a) const {
 }
 
 
-//cuenta cuantos amigos tienen en comun a y b
-unsigned int Amigos::amigosEnComun(unsigned int a, unsigned int b) const {
-    if (a >= cantidadUsuarios || b >= cantidadUsuarios || a == b) {
+//cuenta cuantos amigos tienen en comun A y B
+unsigned int Amigos::amigosEnComun(unsigned int PosicionA, unsigned int PosicionB) const {
+    if (PosicionA >= cantidadUsuarios || PosicionB >= cantidadUsuarios || PosicionA == PosicionB) {
         return 0;
     }
 
     unsigned int total = 0;
     for (unsigned int i = 0; i < cantidadUsuarios; i++) {
-        if (matriz[a * cantidadUsuarios + i] && matriz[b * cantidadUsuarios + i]) {
+        if (matriz[PosicionA * cantidadUsuarios + i] && matriz[PosicionB * cantidadUsuarios + i]) {
             total++;
         }
         Medidor::contar();
@@ -127,31 +131,35 @@ unsigned int Amigos::amigosEnComun(unsigned int a, unsigned int b) const {
 
 
 
-//___REVISAR___
-
-//llena dos listas paralelas: candidatos[i] es un usuario sugerido para a y
-//comunes[i] es cuantos amigos tiene en comun con a. Quedan de mayor a menor.
-void Amigos::sugerencias(unsigned int a, Lista<unsigned int>& candidatos, Lista<unsigned int>& comunes) const {
-    if (a >= cantidadUsuarios) {
+//armamos 2 listas de sugenrencias de amistad para el usuario en PosicionA
+void Amigos::sugerencias(unsigned int PosicionA, Lista<unsigned int>& candidatos, Lista<unsigned int>& comunes) const {
+    if (PosicionA >= cantidadUsuarios) {
         return;
     }
 
+    //se revisa a cada usuario
     for (unsigned int i = 0; i < cantidadUsuarios; i++) {
         Medidor::contar();
 
-        if (i == a || sonAmigos(a, i)) {
+        //si ya son amigos o es el mismo se descarta
+        if (i == PosicionA || sonAmigos(PosicionA, i)) {
             continue;
         }
 
-        unsigned int enComun = amigosEnComun(a, i);
+
+        //si no hay amigos en comun tambien se descarta
+        unsigned int enComun = amigosEnComun(PosicionA, i);
         if (enComun == 0) {
             continue;
         }
 
+
+        //si lo anterior no se cumple se agrega el candidato
         candidatos.agregar(i);
         comunes.agregar(enComun);
 
-        //sube el nuevo hasta su lugar, intercambiando con el anterior si tiene menos
+
+        //se realiza un ordenamiento por insercion para que la lista quede de mayor a menor
         unsigned int pos = candidatos.getTamano() - 1;
         while (pos > 0 && comunes[pos - 1] < comunes[pos]) {
             unsigned int auxCandidato = candidatos[pos - 1];
@@ -169,7 +177,7 @@ void Amigos::sugerencias(unsigned int a, Lista<unsigned int>& candidatos, Lista<
 }
 
 
-//bytes que ocupa el objeto y su tabla
+
 unsigned long Amigos::memoriaUsada() const {
     return sizeof(Amigos) + cantidadUsuarios * cantidadUsuarios * sizeof(bool);
 }

@@ -7,50 +7,51 @@
 template <typename T>
 class Lista{
 private:
-    T* elementos;           //Aqui se guardan los atributos del tipo, por asi decirlo ejemplo foto [fecha, tamano, ruta, likes]
-    unsigned int tamano;    //Numero de datos agregados
-    unsigned int capacidad; // Cuántos datos caben antes de tener que agrandar el arreglo
+    T* elementos;
+    unsigned int tamano;
+    unsigned int capacidad;
 
 public:
-    // Crea una lista vacía: sin arreglo, sin datos y sin espacio reservado
     Lista(){
-        elementos = nullptr;    // Todavía no hay arreglo
-        tamano = 0;             // No hay datos guardados
-        capacidad = 0;          // No hay espacio reservado
+        elementos = nullptr;
+        tamano = 0;
+        capacidad = 0;
     }
 
 
-    // Se ejecuta cuando la lista deja de existir: libera la memoria del arreglo
+
     ~Lista(){
-        delete[] elementos;     // Devuelve al sistema la memoria del arreglo
+        delete[] elementos;
     }
 
 
     //me da una copia de  otra (ambos del mismo tipo)
-    Lista(const Lista<T>& otra){
+    Lista(const Lista<T>& ListaCopia){
         elementos = nullptr;    // Empieza vacía
         tamano = 0;
         capacidad = 0;
-        *this = otra;
+        *this = ListaCopia;
     }
 
 
     // Copia el contenido de otra lista dentro de esta lista1 = lista2, los datos ya agregados
-    Lista<T>& operator=(const Lista<T>& otra){
-        if(this != &otra){                          // validacion de que no sea la misma lista
-            delete[] elementos;                     // Libera el arreglo viejo de esta lista
-            tamano = otra.tamano;                   // Toma el mismo tamaño que la otra
-            capacidad = otra.tamano;                // El arreglo nuevo tendrá justo ese espacio
-            if(tamano > 0){                         // Si la otra tiene datos
-                elementos = new T[capacidad];       // Crea un arreglo propio para esta lista
+    Lista<T>& operator=(const Lista<T>& ListaCopiar){
+        if(this != &ListaCopiar){
+            delete[] elementos;
+            tamano = ListaCopiar.tamano;
+            capacidad = ListaCopiar.tamano;
+            if(tamano > 0){
+                elementos = new T[capacidad];
                 for(unsigned int i = 0; i < tamano; i++){
-                    elementos[i] = otra.elementos[i];   // Copia cada dato, uno por uno
+                    elementos[i] = ListaCopiar.elementos[i];
                 }
-            } else {
+            }
+
+            else {
                 elementos = nullptr;                // Si la otra está vacía, esta también
             }
         }
-        return *this;                               // Devuelve esta lista, para permitir a = b = c
+        return *this;
     }
 
 
@@ -84,9 +85,9 @@ public:
     }
 
 
-    // Devuelve el dato de una posición, para leerlo o cambiarlo: lista[2]
+    // Devuelve el dato de una posición, para leerlo o cambiarlo
     T& operator[](unsigned int posicion){
-        return elementos[posicion];                 // Devuelve el dato original, no una copia
+        return elementos[posicion];
     }
 
 
@@ -106,7 +107,7 @@ public:
         for(unsigned int i = posicion; i + 1 < tamano; i++){
             elementos[i] = elementos[i + 1];
         }
-        tamano--; //dato menos
+        tamano--;
     }
 
 

@@ -1,13 +1,9 @@
 #include "Usuario.h"
 
-Usuario::Usuario() : nombreUsuario(""), fechaNacimiento(""), correo(""),
-    fotoPerfil(""), ciudad(""), pais(""), fechaInscripcion("") {
+Usuario::Usuario() : nombreUsuario(""), fechaNacimiento(""), correo(""), fotoPerfil(""), ciudad(""), pais(""), fechaInscripcion("") {
 }
 
-Usuario::Usuario(const std::string& nombreUsuario, const std::string& fechaNacimiento,
-                 const std::string& correo, const std::string& fotoPerfil,
-                 const std::string& ciudad, const std::string& pais,
-                 const std::string& fechaInscripcion)
+Usuario::Usuario(const std::string& nombreUsuario, const std::string& fechaNacimiento, const std::string& correo, const std::string& fotoPerfil, const std::string& ciudad, const std::string& pais, const std::string& fechaInscripcion)
     : nombreUsuario(nombreUsuario), fechaNacimiento(fechaNacimiento), correo(correo),
     fotoPerfil(fotoPerfil), ciudad(ciudad), pais(pais),
     fechaInscripcion(fechaInscripcion) {
